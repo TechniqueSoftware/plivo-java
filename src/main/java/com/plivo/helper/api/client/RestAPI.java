@@ -5,6 +5,7 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
+import java.net.URLEncoder;
 
 import org.apache.http.client.ClientProtocolException;
 
@@ -96,7 +97,7 @@ public class RestAPI {
 				// Prepare a String with GET parameters
 				String getparams = "?";
 				for ( Entry<String, String> pair : parameters.entrySet() )
-					getparams += pair.getKey() + "=" + pair.getValue() + "&";
+					getparams += pair.getKey() + "=" + URLEncoder.encode(pair.getValue(), "UTF-8") + "&";
 				// remove the trailing '&'
 				getparams = getparams.substring(0, getparams.length() - 1);
 				
